@@ -29,7 +29,6 @@ Este proyecto es una aplicación de notas que utiliza una API REST construida co
 - Vue.js
 - Express.js
 - Bootstrap
--
 
 ## Contribución
 
