@@ -1,0 +1,26 @@
+{
+    "name": "restapi-vue-express-note",
+    "version": "1.0.0",
+    "description": "Una aplicación REST API utilizando Vue.js y Express.js",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    },
+    "keywords": [
+      "js",
+      "restapi",
+      "vue",
+      "node",
+      "express"
+    ],
+    "author": "Artem",
+    "license": "GPL-2.0",
+    "dependencies": {
+      "express": "^4.18.2",
+      "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.22"
+    }
+  }
