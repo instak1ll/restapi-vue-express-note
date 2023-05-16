@@ -32,7 +32,7 @@
                 <h3>{{note.title}}</h3>
                 <p>{{note.content}}</p>
                 <button>Editar</button>
-                <button>Eliminar</button>
+                <button @click="deleteNote(note.id)">Eliminar</button>
             </li>
         </ul>
     </div>

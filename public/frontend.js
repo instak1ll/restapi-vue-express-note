@@ -47,6 +47,20 @@ new Vue({
             } catch (error) {
                 console.error(error)
             }
+        },
+        async deleteNote(noteId) {
+            try {
+                const response = await fetch(`/api/notes/${noteId}`, {
+                    method: 'DELETE'
+                })
+                if (response.ok) {
+                    this.notes = this.notes.filter(note => note.id !== noteId)
+                } else {
+                    console.log('Error al eliminar la nota')
+                }
+            } catch (error) {
+                console.error(error)
+            }
         }
     }
 })
