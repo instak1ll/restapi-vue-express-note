@@ -26,6 +26,27 @@ new Vue({
             } catch (error) {
                 console.error(error)
             }
+        },
+        async addNote() {
+            try {
+                const response = await fetch('/api/notes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.newNote)
+                })
+                if (response.ok) {
+                    const data = await response.json()
+                    this.notes.push(data)
+                    this.newNote = {
+                        title: '',
+                        content: ''
+                    }
+                } else {
+                    console.log('Error al agregar nota')
+                }
+            } catch (error) {
+                console.error(error)
+            }
         }
     }
 })

@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <h1>Notas</h1>
-        <form>
+        <form @submit.prevent="addNote()">
             <div>
                 <label for="title">Titulo:</label>
                 <input type="text" id="title" v-model="newNote.title" placeholder="Ingrese el titulo" />

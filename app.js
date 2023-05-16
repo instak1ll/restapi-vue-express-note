@@ -18,6 +18,13 @@ let notes = [
 app.get('/api/notes', (req, res) => {
     res.json(notes)
 })
+//POST
+app.post('/api/notes', (req, res) => {
+    const { title, content } = req.body
+    const newNote = { id: v4(), title, content }
+    notes.push(newNote)
+    res.status(201).json(newNote)
+})
 
 app.listen(PORT, () => {
     console.log(`El servidor se inicializo en el puerto ${PORT}`)
