@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API REST con Vue y Express</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Notas</h1>
+        <form>
+            <div>
+                <label for="title">Titulo</label>
+                <input type="text" id="title" placeholder="Ingrese el titulo">
+            </div>
+            <div>
+                <label for="content">Contenido</label>
+                <textarea id="content" placeholder="Ingrese el contenido"></textarea>
+            </div>
+            <button type="submit">Agregar nota</button>
+            <div>
+                <button type="submit">Guardar</button>
+                <button type="button">Cancelar</button>
+            </div>
+        </form>
+
+        <ul>
+            <li>
+                <h3>titulo nota</h3>
+                <p>contenido nota</p>
+                <button>Editar</button>
+                <button>Eliminar</button>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="frontend.js"></script>
+</body>
+
+</html>
