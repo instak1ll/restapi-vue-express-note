@@ -6,33 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API REST con Vue y Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
-    <div id="app">
-        <h1>Notas</h1>
+    <div id="app" class="container">
+        <h1 class="mb-4">Notas</h1>
         <form @submit.prevent="editingNoteId ? updateNote() : addNote()">
-            <div>
-                <label for="title">Titulo:</label>
-                <input type="text" id="title" v-model="newNote.title" placeholder="Ingrese el titulo" />
+            <div class="mb-3">
+                <label for="title" class="form-label">Titulo:</label>
+                <input type="text" id="title" v-model="newNote.title" class="form-control"
+                    placeholder="Ingrese el titulo" />
             </div>
-            <div>
-                <label for="content">Contenido:</label>
-                <textarea id="content" v-model="newNote.content" placeholder="Ingrese el contenido"></textarea>
+            <div class="mb-3">
+                <label for="content" class="form-label">Contenido:</label>
+                <textarea id="content" v-model="newNote.content" class="form-control"
+                    placeholder="Ingrese el contenido"></textarea>
             </div>
-            <button type="submit" v-if="!editingNoteId">Agregar nota</button>
+            <button type="submit" v-if="!editingNoteId" class="btn btn-primary">Agregar nota</button>
             <div v-if="editingNoteId">
-                <button type="submit">Guardar</button>
-                <button type="button" @click="cancelEdit()">Cancelar</button>
+                <button type="submit" class="btn btn-primary me-2">Guardar</button>
+                <button type="button" @click="cancelEdit()" class="btn btn-secondary">Cancelar</button>
             </div>
         </form>
 
-        <ul>
+        <ul class="list-unstyled mt-4">
             <li v-for="note in notes" :key="note.id">
-                <h3>{{note.title}}</h3>
-                <p>{{note.content}}</p>
-                <button @click="editNote(note.id)">Editar</button>
-                <button @click="deleteNote(note.id)">Eliminar</button>
+                <div class="note bg-light p-3 mb-3">
+                    <h3 class="mb-3" style="word-wrap: break-word; overflow-wrap: break-word;">{{note.title}}</h3>
+                    <p style="word-wrap: break-word; overflow-wrap: break-word;">{{note.content}}</p>
+                    <button @click="editNote(note.id)" class="btn btn-primary me-2">Editar</button>
+                    <button @click="deleteNote(note.id)" class="btn btn-danger">Eliminar</button>
+                </div>
             </li>
         </ul>
     </div>
