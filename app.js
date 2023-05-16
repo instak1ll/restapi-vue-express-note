@@ -31,6 +31,19 @@ app.delete('/api/notes/:id', (req, res) => {
     notes = notes.filter(note => note.id !== id)
     res.json({ message: 'Nota eliminada' })
 })
+//PUT
+app.put('/api/notes/:id', (req, res) => {
+    const { id } = req.params
+    const { title, content } = req.body
+    const note = notes.find(note => note.id === id)
+    if (note) {
+        note.title = title,
+            note.content = content,
+            res.json(note)
+    } else {
+        res.status(404).json({ message: 'Nota noe ncontrada' })
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`El servidor se inicializo en el puerto ${PORT}`)

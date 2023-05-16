@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <h1>Notas</h1>
-        <form @submit.prevent="addNote()">
+        <form @submit.prevent="editingNoteId ? updateNote() : addNote()">
             <div>
                 <label for="title">Titulo:</label>
                 <input type="text" id="title" v-model="newNote.title" placeholder="Ingrese el titulo" />
@@ -20,10 +20,10 @@
                 <label for="content">Contenido:</label>
                 <textarea id="content" v-model="newNote.content" placeholder="Ingrese el contenido"></textarea>
             </div>
-            <button type="submit">Agregar nota</button>
-            <div>
+            <button type="submit" v-if="!editingNoteId">Agregar nota</button>
+            <div v-if="editingNoteId">
                 <button type="submit">Guardar</button>
-                <button type="button">Cancelar</button>
+                <button type="button" @click="cancelEdit()">Cancelar</button>
             </div>
         </form>
 
@@ -31,7 +31,7 @@
             <li v-for="note in notes" :key="note.id">
                 <h3>{{note.title}}</h3>
                 <p>{{note.content}}</p>
-                <button>Editar</button>
+                <button @click="editNote(note.id)">Editar</button>
                 <button @click="deleteNote(note.id)">Eliminar</button>
             </li>
         </ul>

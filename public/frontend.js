@@ -61,6 +61,42 @@ new Vue({
             } catch (error) {
                 console.error(error)
             }
+        },
+        async editNote(noteId) {
+            this.editingNoteId = noteId
+            const note = this.notes.find(note => note.id === noteId)
+            this.newNote = {
+                title: note.title,
+                content: note.content
+            }
+        },
+        cancelEdit() {
+            this.editingNoteId = null
+            this.newNote = {
+                title: '',
+                content: ''
+            }
+        },
+        async updateNote() {
+            try {
+                const response = await fetch(`/api/notes/${this.editingNoteId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.newNote)
+                })
+                if (response.ok) {
+                    const updateNote = await response.json()
+                    const index = this.notes.findIndex(note => note.id === updateNote.id)
+                    if (index !== -1) {
+                        this.notes.splice(index, 1, updateNote)
+                    }
+                    this.cancelEdit()
+                } else {
+                    console.log('Error al actualizar la nota')
+                }
+            } catch (error) {
+                console.error(error)
+            }
         }
     }
 })
